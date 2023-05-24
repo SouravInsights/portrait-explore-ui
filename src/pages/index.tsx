@@ -23,14 +23,24 @@ import {
   getAllKeywords 
 } from "@/gql/helpers/portfolios"
 
+const staffPickPortfolioOwners = [
+  "0xC7f3618C0C8Be10f45a2d04C7Eb11984D19F82Cd",
+  "0xD606296ae3EE28F80A8C235a9FF110B29Cf87Dbe",
+  "0x8bC13d488Eeb5E898cc9A55Bc0D2D3A2A75e1763",
+  "0x5EC2D4bffc3ca3aA553d3e8D5e0e33ae0Afe2182",
+  "0xdBe81D9643fEa57D2b383d9A207CAb7B4c68E50A",
+  "0x4d55999b51a3dFc182dC9E066DAF356aC46Da10c",
+  "0x30cF51554Ed7eC4f8fB8043DbEE6d82e9E5A24F8",
+  "0x4bc8432edA11F334ADAD3224F728491FACCC710a",
+  "0xa5Dc6aa4ff85079C86F5Fc4c7F2d8feb95fD8aa5"
+]
 
 export default function Home() {
-  const { loading, error, allPortfolios } = getAllPortfolios();
+  // const { loading, error, allPortfolios } = getAllPortfolios();
 
   const [currentTab, setCurrentTab] = useState(0)
   const { categories } = getAllKeywords();
   const { loading: loadingPortfolios, portfolios, loadNextPage } = getPortfliosByKeyword(categories[currentTab]);
-  console.log('portfolios:', portfolios);
   const { openModal, isOpen } = useModal()
 
   const handleModalClick = () => {
@@ -66,7 +76,6 @@ export default function Home() {
   return (
     <Layout>
       <TabProvider>
-        {/* <Tab index={0} label='All' /> */}
         <div className="text-gray-300 font-[15px] font-medium pt-8">Categories</div>
           {memoizedTab}
         <TabPanel>
@@ -82,7 +91,7 @@ export default function Home() {
                       selectedPortfolioId={selectedPortfolioId}
                       isPreviewOn={isOpen}
                       address={authors.value} 
-                      isStaffPick
+                      isStaffPick={staffPickPortfolioOwners.includes(authors.value)}
                       onModalClick={handleModalClick}
                       onPortfolioClick={() => handlePortfolioClick(item.node.id, authors.value)}
                     />
@@ -104,7 +113,7 @@ export default function Home() {
                       selectedPortfolioId={selectedPortfolioId}
                       isPreviewOn={isOpen}
                       address={authors.value} 
-                      isStaffPick
+                      isStaffPick={staffPickPortfolioOwners.includes(authors.value)}
                       onModalClick={handleModalClick}
                       onPortfolioClick={() => handlePortfolioClick(item.node.id, authors.value)}
                     />
@@ -126,7 +135,7 @@ export default function Home() {
                       selectedPortfolioId={selectedPortfolioId}
                       isPreviewOn={isOpen}
                       address={authors.value} 
-                      isStaffPick
+                      isStaffPick={staffPickPortfolioOwners.includes(authors.value)}
                       onModalClick={handleModalClick}
                       onPortfolioClick={() => handlePortfolioClick(item.node.id, authors.value)}
                     />
@@ -148,7 +157,7 @@ export default function Home() {
                       selectedPortfolioId={selectedPortfolioId}
                       isPreviewOn={isOpen}
                       address={authors.value} 
-                      isStaffPick
+                      isStaffPick={staffPickPortfolioOwners.includes(authors.value)}
                       onModalClick={handleModalClick}
                       onPortfolioClick={() => handlePortfolioClick(item.node.id, authors.value)}
                     />
@@ -170,7 +179,7 @@ export default function Home() {
                       selectedPortfolioId={selectedPortfolioId}
                       isPreviewOn={isOpen}
                       address={authors.value} 
-                      isStaffPick
+                      isStaffPick={staffPickPortfolioOwners.includes(authors.value)}
                       onModalClick={handleModalClick}
                       onPortfolioClick={() => handlePortfolioClick(item.node.id, authors.value)}
                     />
@@ -192,7 +201,7 @@ export default function Home() {
                       selectedPortfolioId={selectedPortfolioId}
                       isPreviewOn={isOpen}
                       address={authors.value} 
-                      isStaffPick
+                      isStaffPick={staffPickPortfolioOwners.includes(authors.value)}
                       onModalClick={handleModalClick}
                       onPortfolioClick={() => handlePortfolioClick(item.node.id, authors.value)}
                     />
@@ -214,7 +223,7 @@ export default function Home() {
                       selectedPortfolioId={selectedPortfolioId}
                       isPreviewOn={isOpen}
                       address={authors.value} 
-                      isStaffPick
+                      isStaffPick={staffPickPortfolioOwners.includes(authors.value)}
                       onModalClick={handleModalClick}
                       onPortfolioClick={() => handlePortfolioClick(item.node.id, authors.value)}
                     />
@@ -236,7 +245,7 @@ export default function Home() {
                       selectedPortfolioId={selectedPortfolioId}
                       isPreviewOn={isOpen}
                       address={authors.value} 
-                      isStaffPick
+                      isStaffPick={staffPickPortfolioOwners.includes(authors.value)}
                       onModalClick={handleModalClick}
                       onPortfolioClick={() => handlePortfolioClick(item.node.id, authors.value)}
                     />
